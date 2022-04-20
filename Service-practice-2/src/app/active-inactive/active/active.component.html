@@ -1,0 +1,7 @@
+<h3>Active Users</h3>
+<div class="card" *ngFor="let account of activeAccounts; let i = index">
+  <div class="card-body" >
+    <p class="card-text">{{ account }}</p>
+    <button class="btn btn-primary" (click)="swtichToInactive(i, account)" >Switch to Inactive</button>
+  </div>
+</div>
