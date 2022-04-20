@@ -1,0 +1,14 @@
+<div class="container">
+  <!--* event (serverCreated)="serverAdded($event)" will catch data by using ($event) from cockpit-component-->
+  <!--* event (blueprintCreated)="blueprintAdded($event)" will catch data by using ($event) from cockpit-component-->
+  <app-cockpit (svCreated)="serverAdded($event)" (bpCreated)="blueprintAdded($event)"></app-cockpit>
+  <hr>
+  <!--* Now this srvElement = serverElement since srvElement is Property we can use it in children component (server-element.component) -->
+  <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement" >
+    <p>
+      <!--* make sure to change these variable eg elements should be replace from serverElement -->
+      <strong *ngIf="serverElement.type === 'server'" style="color: red;">{{ serverElement.content }}</strong>
+      <strong *ngIf="serverElement.type === 'blueprint'" style="color: blue;">{{ serverElement.content }}</strong>
+    </p>
+  </app-server-element>
+</div>

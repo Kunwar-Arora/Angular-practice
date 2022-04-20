@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="card">
+      <div class="card-header" >
+        {{ elements.name}}
+      </div>
+      <div class="card-body">
+        <!--* <p>
+          <strong *ngIf="elements.type === 'server'" style="color: red;">{{ elements.content }}</strong>
+          <strong *ngIf="elements.type === 'blueprint'" style="color: blue;">{{ elements.content }}</strong>
+        </p> -->
+        <!--! sometimes if you these types of complex html in parent.html you need this   -->
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
