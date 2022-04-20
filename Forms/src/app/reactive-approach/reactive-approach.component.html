@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+  <div id="user-data" formGroupName="userData" >
+    <div class="form-group">
+      <label for="username">User Name</label>
+      <input type="text" id="username" class="form-control" formControlName="userName">
+      <span class="text-muted" *ngIf="userForm.get('userData.userName')!.errors?.['required'] && userForm.get('userData.userName')!.touched">
+        Please Enter Task Name
+      </span>
+      <span class="text-muted" *ngIf="userForm.get('userData.userName')!.errors?.['NameIsForbidden']">
+        This Name is Forbidden
+      </span><br>
+
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" class="form-control" formControlName="userEmail" >
+      <span class="help-block" *ngIf="userForm.get('userData.userEmail')!.invalid && userForm.get('userData.userEmail')!.touched">Please enter a valid value!</span>
+      <br>
+      <label for="gender">Gender</label>
+      <div class="form-check" *ngFor="let gender of genders">
+        <input type="radio" id="gender" class="form-check-input" formControlName="userGender" [value]="gender">
+        <label for="form-check-label">
+          {{ gender }}</label>
+      </div>
+    </div>
+  </div><br>
+
+  <div id="project-data" formGroupName="projectData">
+    <div class="form-group">
+      <label for="projectName">Project Name</label>
+      <input type="text" id="projectName" class="form-control" formControlName="projectName">
+      <span class="text-muted" *ngIf="userForm.get('projectData.projectName')!.errors?.['required'] && userForm.get('projectData.projectName')!.touched">
+        Please Enter Project Name
+      </span>
+      <span class="text-muted" *ngIf="userForm.get('projectData.projectName')!.errors?.['ProjectAlreadyExist']">
+        This Project Name Already Exist
+      </span><br>
+
+
+      <label for="projectDetails">Project Detail</label>
+      <textarea id="projectDetails" class="form-control" rows="3" formControlName="projectDetails"></textarea><br>
+
+      <label for="projectStatus">Project status</label>
+      <select id="projectStatus" class="form-select" formControlName="projectStatus">
+        <option value="stable">stable</option>
+        <option value="critical">critical</option>
+        <option value="finished">finished</option>
+      </select>
+    </div>
+  </div><br>
+
+  <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>
+
+<hr>
+<div class="row" *ngIf="submitted">
+  <div class="col-12">
+    <h4>Your Data</h4>
+    <p>User Name: {{ formData.userName }}</p>
+    <p>User Email: {{ formData.userEmail }}</p>
+    <p>Gender: {{ formData.userGender }}</p>
+    <p>Project Name: {{ formData.projectName }}</p>
+    <p>Project Details: {{ formData.projectDetails }}</p>
+    <p>Project Status: {{ formData.projectStatus }}</p>
+  </div>
+</div>
