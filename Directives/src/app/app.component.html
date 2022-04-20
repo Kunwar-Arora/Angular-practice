@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="oddOnly = !oddOnly">Only show Odd numbers</button>
+      <br><br>
+      <ul class="list-group">
+        <div *ngIf="!oddOnly">
+          <li class="list-group-items" *ngFor="let oddNumbers of oddNumbers">{{ oddNumbers }}</li>
+        </div> 
+        <div *ngIf="oddOnly">
+          <li class="list-group-items" *ngFor="let evenNumbers of evenNumbers">{{ evenNumbers }}</li>
+        </div>
+      </ul>
+      <br>
+      <p appBasicHighlight>This is elementRef direcitve test using old method dont use it</p>
+      <p appBetterHighlight>This is better highlight directive test using renderer method use this always</p>
+      
+      
+      <!-- you have to add appBetterHighlight these values can be anything  [defaultColor]="'grey'" [highlightColor]="'green'"-->
+      <p appBetterHighlight  [defaultColor]="'grey'" [highlightColor]="'green'">This is mouse Hover test using binding with directive property method use this always</p>
+      
+      <!--* ngSwitch is like condition switch statements  -->
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase = "5" >value is 5</p>
+        <p *ngSwitchCase = "10" >value is 10</p>
+        <p *ngSwitchDefault >value is default</p>
+
+      </div>
+    
+    </div>
+  </div>
+</div>
